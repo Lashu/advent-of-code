@@ -1,4 +1,5 @@
 import adventOfCode.AdventOfCodeDay
+import adventOfCode.InputReader
 import org.reflections.Reflections
 
 const val DEFAULT_YEAR = 2020
@@ -55,12 +56,3 @@ private fun requestedTaskDate(args: Array<String>): Pair<Int, Int> {
 private fun getDayNumber(day: String): Int {
     return day.replace("Day", "").toInt()
 }
-
-
-object InputReader {
-    fun readInput(resourcePath: String): List<String> {
-        return javaClass.getResourceAsStream(resourcePath).bufferedReader().readLines()
-    }
-}
-
-

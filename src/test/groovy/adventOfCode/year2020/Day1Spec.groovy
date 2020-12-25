@@ -22,13 +22,13 @@ class Day1Spec extends Specification {
 
     def "should solve part two"() {
         given:
-        def input = ["123", "2015", "421", "3", "99999", "2"]
+            def input = ["123", "2015", "421", "3", "99999", "2"]
 
         when:
-        def result = day1.partTwo(input)
+            def result = day1.partTwo(input)
 
         then:
-        result == 2015 * 3 * 2
+            result == 2015 * 3 * 2
     }
 
 }

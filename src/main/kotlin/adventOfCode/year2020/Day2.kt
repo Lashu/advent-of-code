@@ -1,8 +1,11 @@
 package adventOfCode.year2020
 
 import adventOfCode.AdventOfCodeDay
+import adventOfCode.toIntRange
+import adventOfCode.toPair
 
 class Day2(day: Int, year: Int) : AdventOfCodeDay(day, year) {
+
     override fun partOne(input: List<String>): Any? {
         return input
             .filter { passwordPolicy -> isPasswordValidBasedOnOccurrences(passwordPolicy) }
@@ -23,12 +26,12 @@ class Day2(day: Int, year: Int) : AdventOfCodeDay(day, year) {
             .toPair()
             .toIntRange()
 
-        val requiredLetter = passwordParts[1][0]
+        val requiredLetter = passwordParts[1].first()
 
         val passwordToValidate = passwordParts[2]
         val letterCount = passwordToValidate.count { it == requiredLetter }
 
-        return passwordRequiredLetterOccurrences.contains(letterCount)
+        return letterCount in passwordRequiredLetterOccurrences
     }
 
     private fun isPasswordValidBasedOnPositions(passwordPolicy: String): Boolean {
@@ -48,12 +51,4 @@ class Day2(day: Int, year: Int) : AdventOfCodeDay(day, year) {
         return firstPositionMatched xor secondPositionMatched
     }
 
-    private fun <T> List<T>.toPair(): Pair<T, T> {
-        require(this.size == 2)
-        return this[0] to this[1]
-    }
-
-    private fun Pair<Int, Int>.toIntRange(): IntRange {
-        return IntRange(this.first, this.second)
-    }
 }
