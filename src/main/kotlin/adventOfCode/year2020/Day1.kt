@@ -3,7 +3,7 @@ package adventOfCode.year2020
 import adventOfCode.AdventOfCodeDay
 import com.google.common.collect.Sets
 
-class Day1(day: Int, year: Int) : AdventOfCodeDay(day, year) {
+class Day1: AdventOfCodeDay {
 
     override fun partOne(input: List<String>): Any? {
         val numbers = input

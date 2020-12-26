@@ -14,3 +14,7 @@ fun <T> List<T>.toPair(): Pair<T, T> {
 fun Pair<Int, Int>.toIntRange(): IntRange {
     return IntRange(this.first, this.second)
 }
+
+operator fun Pair<Int, Int>.plus(other: Pair<Int, Int>): Pair<Int, Int> {
+    return Pair(first + other.first, second + other.second)
+}

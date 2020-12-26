@@ -1,9 +1,12 @@
 import adventOfCode.AdventOfCodeDay
 import adventOfCode.InputReader
 import org.reflections.Reflections
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
 
 const val DEFAULT_YEAR = 2020
 
+@ExperimentalTime
 fun main(args: Array<String>) {
     val (day, year) = getTaskDate(args)
     val adventOfCodeDay = getAdventOfCodeTask(day, year)
@@ -11,8 +14,12 @@ fun main(args: Array<String>) {
     val input = InputReader.readInput("/year$year/Day$day.txt")
 
     println("Solving Day $day of Advent of Code $year")
-    println("Part one: ${adventOfCodeDay.partOne(input)}")
-    println("Part two: ${adventOfCodeDay.partTwo(input)}")
+
+    val partOneMeasured = measureTimedValue { adventOfCodeDay.partOne(input) }
+    val partTwoMeasured = measureTimedValue { adventOfCodeDay.partTwo(input) }
+
+    println("Part one: ${partOneMeasured.value}, duration: ${partOneMeasured.duration}")
+    println("Part two: ${partTwoMeasured.value}, duration: ${partTwoMeasured.duration}")
 }
 
 private fun getTaskDate(args: Array<String>): Pair<Int, Int> {
@@ -31,7 +38,7 @@ private fun getAdventOfCodeTask(day: Int, year: Int): AdventOfCodeDay {
 
     require(requestedDay != null) { "Could not find day $day for year $year"}
 
-    return requestedDay.getDeclaredConstructor(Int::class.java, Int::class.java).newInstance(day, year)
+    return requestedDay.getDeclaredConstructor().newInstance()
 }
 
 private fun defaultTaskDate(): Pair<Int, Int> {

@@ -7,7 +7,7 @@ import spock.lang.Subject
 class Day1Spec extends Specification {
 
     @Subject
-    AdventOfCodeDay day1 = new Day1(1, 2020)
+    AdventOfCodeDay day1 = new Day1()
 
     def "should solve part one"() {
         given:

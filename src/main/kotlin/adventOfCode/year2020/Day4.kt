@@ -3,7 +3,7 @@ package adventOfCode.year2020
 import adventOfCode.AdventOfCodeDay
 import adventOfCode.toPair
 
-class Day4(day: Int, year: Int): AdventOfCodeDay(day, year) {
+class Day4: AdventOfCodeDay {
 
     override fun partOne(input: List<String>): Any? {
         return toPassports(input)
@@ -76,8 +76,7 @@ class Day4(day: Int, year: Int): AdventOfCodeDay(day, year) {
         }
 
         private fun isHgtValid(hgt: String): Boolean {
-            if (hgt.all { it.isDigit() }) return false
-            val (value, unit) = hgt.substring(0, hgt.length - 2).toInt() to hgt.substring(hgt.length - 2)
+            val (value, unit) = hgt.dropLast(2).toIntOrNull() to hgt.takeLast(2)
 
             return when (unit) {
                 "cm" -> value in 150..193

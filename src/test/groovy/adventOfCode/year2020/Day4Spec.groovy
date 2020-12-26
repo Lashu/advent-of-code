@@ -7,7 +7,7 @@ import spock.lang.Subject
 class Day4Spec extends Specification {
 
     @Subject
-    AdventOfCodeDay day4 = new Day4(4, 2020)
+    AdventOfCodeDay day4 = new Day4()
 
     def "should solve part one"() {
         given:
@@ -37,8 +37,8 @@ class Day4Spec extends Specification {
     def "should solve part two"() {
         given:
             def input = [
-                    "eyr:1972 cid:100",
-                    "hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926",
+                    "hgt:66 cid:100",
+                    "hcl:#18171d ecl:amb eyr:1972 pid:186cm iyr:2018 byr:1926",
                     "",
                     "iyr:2019",
                     "hcl:#602927 eyr:1967 hgt:170cm",

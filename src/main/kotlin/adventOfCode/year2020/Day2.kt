@@ -4,7 +4,7 @@ import adventOfCode.AdventOfCodeDay
 import adventOfCode.toIntRange
 import adventOfCode.toPair
 
-class Day2(day: Int, year: Int) : AdventOfCodeDay(day, year) {
+class Day2: AdventOfCodeDay {
 
     override fun partOne(input: List<String>): Any? {
         return input
