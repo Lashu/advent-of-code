@@ -13,6 +13,7 @@ class AllDaysAcceptanceSpec extends Specification {
             solveDay(new Day2()) == [partOne: 586, partTwo: 352]
             solveDay(new Day3()) == [partOne: 284, partTwo: 3510149120]
             solveDay(new Day4()) == [partOne: 192, partTwo: 101]
+            solveDay(new Day5()) == [partOne: 913, partTwo: 717]
     }
 
     Map<Object, Object> solveDay(AdventOfCodeDay day) {

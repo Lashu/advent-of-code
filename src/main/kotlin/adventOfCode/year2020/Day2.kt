@@ -7,15 +7,11 @@ import adventOfCode.toPair
 class Day2: AdventOfCodeDay {
 
     override fun partOne(input: List<String>): Any? {
-        return input
-            .filter { passwordPolicy -> isPasswordValidBasedOnOccurrences(passwordPolicy) }
-            .count()
+        return input.count { isPasswordValidBasedOnOccurrences(it) }
     }
 
     override fun partTwo(input: List<String>): Any? {
-        return input
-            .filter { passwordPolicy -> isPasswordValidBasedOnPositions(passwordPolicy) }
-            .count()
+        return input.count { isPasswordValidBasedOnPositions(it) }
     }
 
     private fun isPasswordValidBasedOnOccurrences(passwordPolicy: String): Boolean {

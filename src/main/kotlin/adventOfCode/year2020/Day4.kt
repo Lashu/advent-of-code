@@ -6,15 +6,11 @@ import adventOfCode.toPair
 class Day4: AdventOfCodeDay {
 
     override fun partOne(input: List<String>): Any? {
-        return toPassports(input)
-            .filter { it.isValidWeak() }
-            .count()
+        return toPassports(input).count { it.isValidWeak() }
     }
 
     override fun partTwo(input: List<String>): Any? {
-        return toPassports(input)
-            .filter { it.isValidHard() }
-            .count()
+        return toPassports(input).count { it.isValidHard() }
     }
 
     companion object {
