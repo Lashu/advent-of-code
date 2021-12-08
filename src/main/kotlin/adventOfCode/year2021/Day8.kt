@@ -3,8 +3,8 @@ package adventOfCode.year2021
 import adventOfCode.AdventOfCodeDay
 
 class Day8: AdventOfCodeDay {
+    
     override fun partOne(input: List<String>): Any? {
-
         var sum = 0
         input.forEach { line ->
             val afterPipe = line.split(" | ").last()
@@ -16,8 +16,7 @@ class Day8: AdventOfCodeDay {
     }
 
     override fun partTwo(input: List<String>): Any? {
-        var sum = 0
-        input.forEach { line ->
+        return input.map { line ->
             val leftAndRight = line.split(" | ")
             val left = leftAndRight.first().split(" ")
             val right = leftAndRight.last().split(" ")
@@ -27,13 +26,13 @@ class Day8: AdventOfCodeDay {
             val seven = left.single { it.length == 3}
             val eight = left.single { it.length == 7}
             val six = left.single { it.length == 6 && it.count { char -> one.contains(char) }==1 }
-            val zero = left.single { it.length == 6 && !it.toList().containsAll(six.toList()) && !it.toList().containsAll(four.toList())}
-            val nine = left.single { it.length == 6 && !it.toList().containsAll(six.toList()) && !it.toList().containsAll(zero.toList())}
+            val zero = left.single { it.length == 6 && it.isNot(six) && it.isNot(four)}
+            val nine = left.single { it.length == 6 && it.isNot(six) && it.isNot(zero)}
             val topRight = left.single { it.length == 7 }.filterNot { six.contains(it) }
             val five = left.single { it.length == 5 && !it.contains(topRight) }
             val bottomLeft = left.single { it.length == 7 }.filterNot { nine.contains(it) }
-            val three = left.single { it.length == 5 && !it.toList().containsAll(five.toList()) && !it.contains(bottomLeft) }
-            val two = left.single { it.length == 5 && !it.toList().containsAll(five.toList()) && !it.toList().containsAll(three.toList()) }
+            val three = left.single { it.length == 5 && it.isNot(five) && !it.contains(bottomLeft) }
+            val two = left.single { it.length == 5 && it.isNot(five) && it.isNot(three) }
 
             val mapOfNumbers = mapOf(
                 zero to "0",
@@ -50,11 +49,15 @@ class Day8: AdventOfCodeDay {
 
             var number = ""
             right.map {
-                number += mapOfNumbers[mapOfNumbers.keys.find { key -> key.toList().containsAll(it.toList()) && key.length == it.length }]
+                number += mapOfNumbers.entries.single { entry -> entry.key.toList().containsAll(it.toList()) && entry.key.length == it.length }.value
             }
-            sum += number.toInt()
-        }
+            number.toInt()
 
-        return sum
+        }.sum()
+
+    }
+
+    private fun String.isNot(other: String): Boolean {
+        return !this.toList().containsAll(other.toList())
     }
 }
