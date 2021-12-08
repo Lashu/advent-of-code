@@ -13,7 +13,7 @@ class Day1: AdventOfCodeDay {
     }
 
     override fun partTwo(input: List<String>): Any? {
-        return input.map { it.toInt() }
+        return input.asSequence().map { it.toInt() }
             .windowed(3, 1)
             .map { it.sum() }
             .windowed(2)
