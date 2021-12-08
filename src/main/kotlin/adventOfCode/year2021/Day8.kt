@@ -22,18 +22,18 @@ class Day8: AdventOfCodeDay {
             val left = leftAndRight.first().split(" ")
             val right = leftAndRight.last().split(" ")
 
-            val jedynka = left.find { it.length == 2 }!!
-            val czworka = left.find { it.length == 4 }!!
-            val siodemka = left.find { it.length == 3}!!
-            val osemka = left.find { it.length == 7}!!
-            val szostka = left.find { it.length == 6 && it.count { char -> jedynka.contains(char) }==1 }!!
-            val zero = left.find { it.length == 6 && !it.toList().containsAll(szostka.toList()) && !it.toList().containsAll(czworka.toList())}!!
-            val dziewiatka = left.find { it.length == 6 && !it.toList().containsAll(szostka.toList()) && !it.toList().containsAll(zero.toList())}!!
-            val prawaGorna = left.find { it.length == 7 }!!.filterNot { szostka.contains(it) }
-            val piatka = left.find { it.length == 5 && !it.contains(prawaGorna) }!!
-            val lewaDolna = left.find { it.length == 7 }!!.filterNot { dziewiatka.contains(it) }
-            val trojka = left.find { it.length == 5 && !it.toList().containsAll(piatka.toList()) && !it.contains(lewaDolna) }!!
-            val dwojka = left.find { it.length == 5 && !it.toList().containsAll(piatka.toList()) && !it.toList().containsAll(trojka.toList()) }!!
+            val jedynka = left.single { it.length == 2 }
+            val czworka = left.single { it.length == 4 }
+            val siodemka = left.single { it.length == 3}
+            val osemka = left.single { it.length == 7}
+            val szostka = left.single { it.length == 6 && it.count { char -> jedynka.contains(char) }==1 }
+            val zero = left.single { it.length == 6 && !it.toList().containsAll(szostka.toList()) && !it.toList().containsAll(czworka.toList())}
+            val dziewiatka = left.single { it.length == 6 && !it.toList().containsAll(szostka.toList()) && !it.toList().containsAll(zero.toList())}
+            val prawaGorna = left.single { it.length == 7 }.filterNot { szostka.contains(it) }
+            val piatka = left.single { it.length == 5 && !it.contains(prawaGorna) }
+            val lewaDolna = left.single { it.length == 7 }.filterNot { dziewiatka.contains(it) }
+            val trojka = left.single { it.length == 5 && !it.toList().containsAll(piatka.toList()) && !it.contains(lewaDolna) }
+            val dwojka = left.single { it.length == 5 && !it.toList().containsAll(piatka.toList()) && !it.toList().containsAll(trojka.toList()) }
 
             val mapOfNumbers = mapOf(
                 zero to "0",
