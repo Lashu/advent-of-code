@@ -3,7 +3,7 @@ package adventOfCode.year2021
 import adventOfCode.AdventOfCodeDay
 
 class Day8: AdventOfCodeDay {
-    
+
     override fun partOne(input: List<String>): Any? {
         var sum = 0
         input.forEach { line ->

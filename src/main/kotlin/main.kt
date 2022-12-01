@@ -4,7 +4,7 @@ import org.reflections.Reflections
 import kotlin.time.ExperimentalTime
 import kotlin.time.measureTimedValue
 
-const val DEFAULT_YEAR = 2021
+const val DEFAULT_YEAR = 2022
 
 @ExperimentalTime
 fun main(args: Array<String>) {
